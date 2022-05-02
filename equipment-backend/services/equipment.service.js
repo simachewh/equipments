@@ -9,3 +9,9 @@ const getEquipmentById = async (id) => {
 const getEquipments = async (limit) => {
     return {}
 }
+
+module.exports = {
+    createEquipment,
+    getEquipmentById,
+    getEquipments
+}
