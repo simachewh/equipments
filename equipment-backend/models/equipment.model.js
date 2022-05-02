@@ -4,8 +4,7 @@ const equipmentSchema = new mongoose.Schema({
     equipmentNumber: {
         type: String,
         required: true,
-        unique: true,
-        default: uuidv4()
+        unique: true
     },
     address: {
         type: String,
