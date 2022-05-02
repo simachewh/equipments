@@ -18,6 +18,10 @@ const equipmentSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    isRunning: {
+        type: Boolean,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Equipment', equipmentSchema);

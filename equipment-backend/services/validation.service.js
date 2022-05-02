@@ -5,7 +5,8 @@ equipmentValidation = [
     check('address').isLength({ min: 4 }).withMessage('Address is required'),
     check('contractStartDate').isLength({ min: 4 }).withMessage('Contract start date is required'),
     check('contractEndDate').isLength({ min: 4 }).withMessage('Contract end date is required'),
-    check('status').isLength({ min: 4 }).withMessage('Status is required'), (req, res, next) => {
+    check('isRunning').not().isEmpty().isBoolean().withMessage('isRunning is required'),
+    (req, res, next) => {
         const errors = validationResult(req);
         console.log(`validation errors: ${errors.array()}`);
         if (!errors.isEmpty()) {

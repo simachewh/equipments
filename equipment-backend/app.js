@@ -8,7 +8,7 @@ const logRouter = require('./routes/log.route');
 const db = require('./database');
 
 try {
-    db.connectDB();
+    db.connect();
 }
 catch (err) {
     console.log('MongoDB not connected');

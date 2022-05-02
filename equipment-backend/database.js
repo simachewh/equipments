@@ -1,11 +1,11 @@
 const config = require("./config");
+const mongoose = require('mongoose');
 const dbURI = config.db.host;
 
-const connectDB = async () => {
+const connect = async () => {
     try {
         await mongoose.connect(dbURI, {
-            useNewUrlParser: true,
-            useCreateIndex: true
+            useNewUrlParser: true
         });
         console.log("MongoDB Connected");
     } catch (err) {
@@ -14,3 +14,5 @@ const connectDB = async () => {
         process.exit(1);
     }
 }
+
+module.exports = { connect }

@@ -7,19 +7,26 @@ const createEquipment = async (req, res) => {
             address,
             contractStartDate,
             contractEndDate,
-            status
+            isRunning
         } = req.body;
         const equipment = {
             equipmentNumber,
             address,
             contractStartDate,
             contractEndDate,
-            status
+            isRunning
+        }
+        let existingEquipment = await equipmentService.getEquipmentByEquipmentNumber(equipmentNumber);
+        if (existingEquipment) {
+            return res.status(409).json({
+                message: 'Equipment already exists'
+            });
         }
         const newEquipment = await equipmentService.createEquipment(req.body);
         res.json(equipment);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error(`ERROR ${err.message}`);
+        res.status(500).json({ message: 'ERROR: internal server error occured' });
     }
 }
 
